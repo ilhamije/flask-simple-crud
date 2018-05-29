@@ -1,1 +1,3 @@
-web: python __init__.py
+web: gunicorn app:app
+init: python database_setup.py
+upgrade: python database_setup.py
