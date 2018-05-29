@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+<div>
+  {% block header %}
+  <h1 class="title">Restaurant List</h1>
+  <h3 class="subtitle">Select restaurant's name to see its menu.</h3>
+  <a class="button is-link" href="{{url_for('newRestaurant')}}">New Resto</a>
+  {% endblock %}
+</div>
+
+<br />
+
+{% block content %}
+
+<table class="table is-striped table is-fullwidth">
+  <thead>
+    <tr>
+      <td>Resto name</td>
+      <td>Edit Action</td>
+      <td>Delete Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in restaurant %}
+    <tr>
+      <td>
+        <a href="{{url_for('restaurantMenu', restaurant_id=i.id)}}">{{ i.name }}</a>
+      </td>
+      <td>
+        <a href="{{url_for('editRestaurant', restaurant_id=i.id)}}">Edit</a>
+      </td>
+      <td>
+        <a href="{{url_for('deleteRestaurant', restaurant_id=i.id)}}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

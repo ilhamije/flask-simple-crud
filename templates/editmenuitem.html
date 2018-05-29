@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+<div>
+{% block header %}
+<h1 class="title">{{ restaurant.name }}</h1>
+<h4 class="subtitle">Edit Menu : {{item.name}}</h4>
+{% endblock %}
+</div>
+
+{% block content %}
+<form action="{{ url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=item.id) }}" method='post'>
+  <p class="control">
+    Name:
+    <input class="input" type="text" size="30" name="name" value="{{item.name}}" />
+  </p>
+  <p class="control">
+    Description:
+    <input class="input" type="text" size="30" name="description" value="{{item.description}}" />
+  </p>
+  <p class="control">
+    Price:
+    <input class="input" type="text" size="30" name="price" value="{{item.price}}" />
+  </p>
+  <p class="control">
+    Course:
+    <input class="input" type="text" size="30" name="course" value="{{item.course}}" />
+  </p>
+  <p>
+    <button class="button is-primary" type="submit">Edit</button>
+    <a class="button is-white" href= '{{url_for('restaurantMenu', restaurant_id=item.restaurant_id)}}'>Cancel</a>
+  </p>
+  </div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+<div>
+{% block header %}
+<h1 class="title">{{ restaurant.name }}</h1>
+<h4 class="subtitle">Delete Menu : {{item.name}}</h4>
+{% endblock %}
+</div>
+
+
+{% block content %}
+<h3 class="title">Do you really want to delete {{item.name}}?</h3>
+
+<form action="{{ url_for('deleteMenuItem', restaurant_id=item.restaurant_id, menu_id=item.id) }}" method='post'>
+  <p>
+    <button class="button is-danger" type="submit">Delete</button>
+    <a class="button is-white" href= '{{url_for('restaurantMenu', restaurant_id=item.restaurant_id)}}'>Cancel</a>
+  </p>
+</form>
+{% endblock %}

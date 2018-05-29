@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+<div>
+{% block header %}
+<h1 class="title">{{ restaurant.name }}</h1>
+<h4 class="subtitle">
+  <a class="is-link" href= '{{url_for('restaurantList')}}'>Restaurant</a>
+</h4>
+<a class="button is-link" href="{{url_for('newMenuItem', restaurant_id=restaurant.id)}}">New Menu Item</a>
+{% endblock %}
+</div>
+
+<br />
+
+{% block content %} {% for i in items %}
+<div class="card">
+  <div class="card-content">
+    <p class="title">{{ i.name }}</p>
+    <p class="subtitle">
+      {{ i.description }}<br />
+      {{ i.course }}<br />
+      {{ i.price }}<br />
+    </p>
+  </div>
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+        <a href="{{url_for('editMenuItem', restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
+      </span>
+    </p>
+    <p class="card-footer-item">
+      <span>
+        <a href="{{url_for('deleteMenuItem', restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
+      </span>
+    </p>
+  </footer>
+</div>
+<br />
+{% endfor %} {% endblock %}

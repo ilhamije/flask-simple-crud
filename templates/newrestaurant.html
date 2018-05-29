@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+<div>
+{% block header %}
+<h1 class="title">Add new Resto</h1>
+{% endblock %}
+</div>
+
+{% block content %}
+<form action="{{ url_for('newRestaurant') }}" method='post'>
+  <p>
+    Name:<br />
+    <input class="input" type="text" size="30" name="name" />
+  </p>
+  <p>
+    <button type="submit">Save</button>
+    <a href= '{{url_for('restaurantList')}}'>Cancel</a>
+  </p>
+
+</form>
+{% endblock %}
